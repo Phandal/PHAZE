@@ -1,0 +1,12 @@
+#+Title: Maze Notes
+
+* Recursive Backtracking algorithm
+Uses a stack and recursion to go through all squares in the grid and mark as visited.
+A high level overview
+1. Initalize starting point and push it to the stack. Also, update visited counter
+2. Look for cells that are adjacent to the current cell that are not visited.
+3. Choose one at random and push it to the top of the stack as the new current position
+4. rinse and repeat until there is a cell that has no unvisted neighbors.
+5. Once here, pop up the top part of the stack and look for unvisited neighbors at the last location.
+6. Rinse and repeat until all cells have been visited.
+

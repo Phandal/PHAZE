@@ -1,0 +1,17 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Wall",
+      "-Werror",
+      "-pedantic",
+      "-o",
+      "maze",
+      "main.c"
+    ],
+    "directory": "/home/bailey/Desktop/Maze/src",
+    "file": "/home/bailey/Desktop/Maze/src/main.c",
+    "output": "/home/bailey/Desktop/Maze/src/maze"
+  }
+]
