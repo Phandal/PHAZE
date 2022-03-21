@@ -1,48 +1,53 @@
-#ifndef malloc
-  #include <stdlib.h>
-  #include <stdbool.h>
-  #include <stdio.h>
-#endif
+#include "stack.h"
+#include <stdlib.h>
+#include <stdio.h>
 
-typedef struct StackNodes {
-  int data;
-  struct StackNodes *below;
-}StackNode;
-
-StackNode* newNode(int data){
-  StackNode* node = (StackNode*)malloc(sizeof(StackNode*));
-  node->data = data;
-  node->below = NULL;
-  printf("New Node Created\n");
-  return node;
+Node* newNode(int data){
+  Node* new = (Node*)malloc(sizeof(Node*));
+  new->data = data;
+  new->next = NULL;
+  printf("New node created with the value of: %i\n", data);
+  return new;
 }
 
-bool isEmpty(StackNode* root){
-  return !root;
+int isEmpty(Node** node){
+  if((*node) == NULL){
+    return 1;
+  }
+  return 0;
 }
 
-void push(StackNode** root, int data){
-  StackNode *node = newNode(data);
-  node->below = *root;
-  *root = node;
-  printf("Pushed new node with value of: %d\n", node->data);
+int pushNode(int data, Node** node){
+  Node* new = newNode(data);
+  new->next = *node;
+  *node = new;
+  printf("Pushed to stack!\n");
+  return 1;
 }
 
-int pop(StackNode** root){
-  if(isEmpty(*root)){
+int popNode(Node** node){
+  if (isEmpty(node)){
     return 0;
   }
-  StackNode *temp = *root;
-  *root = (*root)->below;
-  int popped = temp->data;
+  Node* temp = *node;
+  int data = temp->data;
+  *node = (*node)->next;
   free(temp);
-  return popped;
-  printf("Popped the top node off!");
+  return data;
 }
 
-int peek(StackNode* root){
-  if(isEmpty(root)){
+int peekNode(Node* node){
+  if (isEmpty(&node)){
     return 0;
   }
-  return root->data;
+  return node->data;
+}
+
+int freeStack(Node** node){
+  while(!isEmpty(node)){
+    Node* temp = *node;
+    *node = (*node)->next;
+    free(temp);
+  }
+  return 1;
 }

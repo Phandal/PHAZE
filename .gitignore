@@ -1,3 +1,5 @@
 .ccls-cache
-maze
-main2
+.cache
+main
+stacktest
+*.o

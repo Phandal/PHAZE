@@ -1,20 +1,29 @@
-/* This is my implementation of a stack using linked lists
- * I used https://www.geeksforgeeks.org/stack-data-structure-introduction-program/
- * for inspiration.
- */
-#include <stdbool.h>
+#ifndef STACK_H
+#define STACK_H
 
-typedef struct StackNodes {
-  int data;
-  struct StackNodes *next;
-}StackNode;
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-StackNode* newNode(int data);
+  typedef struct Node{
+    int data;
+    struct Node* next;
+  } Node;
 
-bool isEmpty(StackNode *root);
+  
+  Node* newNode(int data);
 
-void push(StackNode* root, int data);
+  int pushNode(int data, Node** node);
 
-int pop(StackNode* root);
+  int popNode(Node** node);
 
-int peek(StackNode *root);
+  int peekNode(Node* node);
+
+  int isEmpty(Node** node);
+
+  int freeStack(Node** node);
+  
+#ifdef __cplusplus
+}
+#endif
+#endif // STACK_H
